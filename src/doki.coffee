@@ -13,27 +13,37 @@ window.doki = (url, options, callback) ->
   source = context.createMediaElementSource(audio)
   source.connect(context.destination)
 
+  debug = false
   monitor = null
-  interval = 40 # 25fps
+  interval = 40
   flag = 0
   keyFrames = []
 
+  debug = true if options and options.debug
+
   onFrame = (time) ->
+    console.log(time) if debug
     if keyFrames[flag] and keyFrames[flag].time < time
       keyFrames[flag].action()
       flag++
 
  
   play: (offset) ->
-    flag = 0
+    if not audio.paused
+      clearInterval monitor
+      audio.pause()
+      return @
+
     audio.play()
     # BGM Doki
     monitor = setInterval () ->
-      onFrame(source.context.currentTime)
-    , @interval
+      onFrame(source.mediaElement.currentTime)
+    , interval
+    return @
 
   on: (time, action) ->
     keyFrames.push
       time: time
       action: action
+    return @
 
