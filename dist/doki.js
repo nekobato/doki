@@ -1,7 +1,8 @@
 (function() {
   window.dokiAudio = function(url, options, callback) {
-    var analyser, audio, context, debug, flag, interval, keyFrames, monitor, onFrame, source;
-    context = new (webkitAudioContext || AudioContext)();
+    var AudioContext, analyser, audio, context, debug, flag, interval, keyFrames, monitor, onFrame, source;
+    AudioContext = window.AudioContext || window.webkitAudioContext;
+    context = new AudioContext;
     analyser = context.createAnalyser();
     audio = new Audio();
     audio.src = url;

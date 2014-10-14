@@ -1,6 +1,8 @@
 window.dokiAudio = (url, options, callback) ->
 
-  context = new ( webkitAudioContext || AudioContext )()
+  AudioContext = window.AudioContext || window.webkitAudioContext
+
+  context = new AudioContext
   analyser = context.createAnalyser()
 
   audio = new Audio()
