@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    title Doki Play
+    script(src='../dist/doki.min.js', type='text/javascript')
+    script.
+      audio = new doki('./sample.mp3');
+  body
+    h1 Doki Play
+    button(onclick='audio.play()') Play
