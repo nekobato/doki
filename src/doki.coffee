@@ -1,5 +1,7 @@
 window.dokiAudio = (url, options, callback) ->
 
+  @options = options || {}
+
   AudioContext = window.AudioContext || window.webkitAudioContext
 
   context = new AudioContext
@@ -17,13 +19,11 @@ window.dokiAudio = (url, options, callback) ->
 
   # init
   ->
-    if option
-      @options.debug    = options.debug    || false
-      @options.interval = options.interval || 40 # 25fps
+    @options.debug    || = false
+    @options.interval || = 40 # 25fps
     callback() if callback
 
   onFrame = (time) ->
-    console.log(time) if @options.debug
     if keyFrames[flag] and keyFrames[flag].time < time
       keyFrames[flag].action()
       flag++
