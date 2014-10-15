@@ -1,0 +1,177 @@
+// animation mixin
+@mixin animation($options) {
+  -moz-animation: $options;
+  -webkit-animation: $options;
+  -ms-animation: $options;
+  animation: $options;
+}
+
+// keyframes mixin
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @-moz-keyframes #{$name} {
+    @content;
+  }
+  @-ms-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #FFFFFF;
+  padding: 70px;
+}
+
+.scenes {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #DDD;
+  width: 900px;
+  height: 400px;
+}
+
+.scene1 {
+
+  overflow: hidden;
+  position: relative;
+  background-color: #BB6600;
+  width: 100%;
+  height: 100%;
+  display: none;
+
+  @include animation(scene-bg 0.75s ease 0s 1 alternate);
+
+  .fa-bicycle {
+    font-size: 60px;
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    @include animation(bicycle 10s linear 0s 1 alternate);
+  }
+
+}
+
+.scene2 {
+
+  overflow: hidden;
+  position: relative;
+  background-color: #0099FF;
+  height: 100%;
+  width: 100%;
+  display: none;
+
+  @include animation(scene-bg 0.75s ease 0s 1 alternate);
+
+  .fa-cloud {
+    position: absolute;
+    color: #FFFFFF;
+    @include animation(clouds 10s linear 0s 1 alternate);
+  }
+
+  .c1 {
+    top: 30px;
+    left: 400px;
+    font-size: 30px;
+  }
+  .c2 {
+    top: 50px;
+    left: 600px;
+    font-size: 150px;
+  }
+  .c3 {
+    top: 80px;
+    left: 350px;
+    font-size: 80px;
+  }
+  .c4 {
+    top: 150px;
+    left: 200px;
+    font-size: 50px;
+  }
+  .f1 {
+    position: absolute;
+    color: #000000;
+    font-size: 100px;
+    @include animation(f1 10s linear 0s 1 alternate);
+  }
+}
+
+.scene3 {
+
+  overflow: hidden;
+  position: relative;
+  background-color: #0033FF;
+  height: 100%;
+  width: 100%;
+  display: none;
+
+  @include animation(scene-bg 0.75s ease 0s 1 alternate);
+
+  .fa-star {
+    position: absolute;
+    color: #FFCC00;
+    @include animation(stars 0.5s linear 0s infinite alternate);
+  }
+  .s1 {
+    top: 30px;
+    left: 400px;
+    font-size: 30px;
+  }
+  .s2 {
+    top: 50px;
+    left: 600px;
+    font-size: 150px;
+  }
+  .s3 {
+    top: 80px;
+    left: 350px;
+    font-size: 80px;
+  }
+  .s4 {
+    top: 150px;
+    left: 200px;
+    font-size: 50px;
+  }
+  .r1 {
+    position: absolute;
+    color: #000000;
+    font-size: 100px;
+    @include animation(f1 10s linear 0s 1 alternate);
+  }
+}
+
+@include keyframes(scene-bg) {
+  0% { height: 1%; }
+  100% { height: 100%; }
+}
+@include keyframes(bicycle) {
+  0% { left: 50px; }
+  100% { left: 500px; }
+}
+@include keyframes(clouds) {
+  0% {  }
+  100% { left: 0px; }
+}
+@include keyframes(stars) {
+  0% { transform: scale(0.5); }
+  100% { transform: scale(0.7) rotate(180deg); }
+}
+@include keyframes(f1) {
+  0% { left: 0px; top: 200px; }
+  100% { left: 1000px; top: 100px; font-size: 50px; }
+}

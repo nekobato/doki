@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box; }
+
+body, html {
+  width: 100%;
+  height: 100%;
+  margin: 0; }
+
+body {
+  background: #FFFFFF;
+  padding: 70px; }
+
+.scenes {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid #DDD;
+  width: 900px;
+  height: 400px; }
+
+.scene1 {
+  overflow: hidden;
+  position: relative;
+  background-color: #BB6600;
+  width: 100%;
+  height: 100%;
+  display: none;
+  -moz-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -webkit-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -ms-animation: scene-bg 0.75s ease 0s 1 alternate;
+  animation: scene-bg 0.75s ease 0s 1 alternate; }
+  .scene1 .fa-bicycle {
+    font-size: 60px;
+    position: absolute;
+    top: 100px;
+    left: 500px;
+    -moz-animation: bicycle 10s linear 0s 1 alternate;
+    -webkit-animation: bicycle 10s linear 0s 1 alternate;
+    -ms-animation: bicycle 10s linear 0s 1 alternate;
+    animation: bicycle 10s linear 0s 1 alternate; }
+
+.scene2 {
+  overflow: hidden;
+  position: relative;
+  background-color: #0099FF;
+  height: 100%;
+  width: 100%;
+  display: none;
+  -moz-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -webkit-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -ms-animation: scene-bg 0.75s ease 0s 1 alternate;
+  animation: scene-bg 0.75s ease 0s 1 alternate; }
+  .scene2 .fa-cloud {
+    position: absolute;
+    color: #FFFFFF;
+    -moz-animation: clouds 10s linear 0s 1 alternate;
+    -webkit-animation: clouds 10s linear 0s 1 alternate;
+    -ms-animation: clouds 10s linear 0s 1 alternate;
+    animation: clouds 10s linear 0s 1 alternate; }
+  .scene2 .c1 {
+    top: 30px;
+    left: 400px;
+    font-size: 30px; }
+  .scene2 .c2 {
+    top: 50px;
+    left: 600px;
+    font-size: 150px; }
+  .scene2 .c3 {
+    top: 80px;
+    left: 350px;
+    font-size: 80px; }
+  .scene2 .c4 {
+    top: 150px;
+    left: 200px;
+    font-size: 50px; }
+  .scene2 .f1 {
+    position: absolute;
+    color: #000000;
+    font-size: 100px;
+    -moz-animation: f1 10s linear 0s 1 alternate;
+    -webkit-animation: f1 10s linear 0s 1 alternate;
+    -ms-animation: f1 10s linear 0s 1 alternate;
+    animation: f1 10s linear 0s 1 alternate; }
+
+.scene3 {
+  overflow: hidden;
+  position: relative;
+  background-color: #0033FF;
+  height: 100%;
+  width: 100%;
+  display: none;
+  -moz-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -webkit-animation: scene-bg 0.75s ease 0s 1 alternate;
+  -ms-animation: scene-bg 0.75s ease 0s 1 alternate;
+  animation: scene-bg 0.75s ease 0s 1 alternate; }
+  .scene3 .fa-star {
+    position: absolute;
+    color: #FFCC00;
+    -moz-animation: stars 0.5s linear 0s infinite alternate;
+    -webkit-animation: stars 0.5s linear 0s infinite alternate;
+    -ms-animation: stars 0.5s linear 0s infinite alternate;
+    animation: stars 0.5s linear 0s infinite alternate; }
+  .scene3 .s1 {
+    top: 30px;
+    left: 400px;
+    font-size: 30px; }
+  .scene3 .s2 {
+    top: 50px;
+    left: 600px;
+    font-size: 150px; }
+  .scene3 .s3 {
+    top: 80px;
+    left: 350px;
+    font-size: 80px; }
+  .scene3 .s4 {
+    top: 150px;
+    left: 200px;
+    font-size: 50px; }
+  .scene3 .r1 {
+    position: absolute;
+    color: #000000;
+    font-size: 100px;
+    -moz-animation: f1 10s linear 0s 1 alternate;
+    -webkit-animation: f1 10s linear 0s 1 alternate;
+    -ms-animation: f1 10s linear 0s 1 alternate;
+    animation: f1 10s linear 0s 1 alternate; }
+
+@-webkit-keyframes scene-bg {
+  0% {
+    height: 1%; }
+
+  100% {
+    height: 100%; } }
+@-moz-keyframes scene-bg {
+  0% {
+    height: 1%; }
+
+  100% {
+    height: 100%; } }
+@-ms-keyframes scene-bg {
+  0% {
+    height: 1%; }
+
+  100% {
+    height: 100%; } }
+@keyframes scene-bg {
+  0% {
+    height: 1%; }
+
+  100% {
+    height: 100%; } }
+@-webkit-keyframes bicycle {
+  0% {
+    left: 50px; }
+
+  100% {
+    left: 500px; } }
+@-moz-keyframes bicycle {
+  0% {
+    left: 50px; }
+
+  100% {
+    left: 500px; } }
+@-ms-keyframes bicycle {
+  0% {
+    left: 50px; }
+
+  100% {
+    left: 500px; } }
+@keyframes bicycle {
+  0% {
+    left: 50px; }
+
+  100% {
+    left: 500px; } }
+@-webkit-keyframes clouds {
+  100% {
+    left: 0px; } }
+@-moz-keyframes clouds {
+  100% {
+    left: 0px; } }
+@-ms-keyframes clouds {
+  100% {
+    left: 0px; } }
+@keyframes clouds {
+  100% {
+    left: 0px; } }
+@-webkit-keyframes stars {
+  0% {
+    transform: scale(0.5); }
+
+  100% {
+    transform: scale(0.7) rotate(180deg); } }
+@-moz-keyframes stars {
+  0% {
+    transform: scale(0.5); }
+
+  100% {
+    transform: scale(0.7) rotate(180deg); } }
+@-ms-keyframes stars {
+  0% {
+    transform: scale(0.5); }
+
+  100% {
+    transform: scale(0.7) rotate(180deg); } }
+@keyframes stars {
+  0% {
+    transform: scale(0.5); }
+
+  100% {
+    transform: scale(0.7) rotate(180deg); } }
+@-webkit-keyframes f1 {
+  0% {
+    left: 0px;
+    top: 200px; }
+
+  100% {
+    left: 1000px;
+    top: 100px;
+    font-size: 50px; } }
+@-moz-keyframes f1 {
+  0% {
+    left: 0px;
+    top: 200px; }
+
+  100% {
+    left: 1000px;
+    top: 100px;
+    font-size: 50px; } }
+@-ms-keyframes f1 {
+  0% {
+    left: 0px;
+    top: 200px; }
+
+  100% {
+    left: 1000px;
+    top: 100px;
+    font-size: 50px; } }
+@keyframes f1 {
+  0% {
+    left: 0px;
+    top: 200px; }
+
+  100% {
+    left: 1000px;
+    top: 100px;
+    font-size: 50px; } }
