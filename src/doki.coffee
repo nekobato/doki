@@ -3,32 +3,32 @@ window.dokiAudio = (url, options, callback) ->
   AudioContext = window.AudioContext || window.webkitAudioContext
 
   context = new AudioContext
-  analyser = context.createAnalyser()
+  audio   = new Audio
 
-  audio = new Audio()
-  audio.src = url
+  audio.src      = url
   audio.controls = true
   audio.autoplay = false
-  audio.onended = () ->
-    clearInterval monitor
+  audio.onended  = clearInterval(monitor)
 
   source = context.createMediaElementSource(audio)
   source.connect(context.destination)
 
-  debug = false
   monitor = null
-  interval = 40
-  flag = 0
   keyFrames = []
+  flag = 0
 
-  debug = true if options and options.debug
+  # init
+  ->
+    if option
+      @options.debug    = options.debug    || false
+      @options.interval = options.interval || 40 # 25fps
+    callback() if callback
 
   onFrame = (time) ->
-    console.log(time) if debug
+    console.log(time) if @debug
     if keyFrames[flag] and keyFrames[flag].time < time
       keyFrames[flag].action()
       flag++
-
  
   play: (offset) ->
     if not audio.paused
@@ -39,8 +39,8 @@ window.dokiAudio = (url, options, callback) ->
     audio.play()
     # BGM Doki
     monitor = setInterval () ->
-      onFrame(source.mediaElement.currentTime)
-    , interval
+      onFrame(audio.currentTime)
+    , @interval
     return @
 
   on: (time, action) ->
@@ -48,4 +48,3 @@ window.dokiAudio = (url, options, callback) ->
       time: time
       action: action
     return @
-
