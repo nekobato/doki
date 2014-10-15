@@ -3,8 +3,7 @@
     var AudioContext, audio, context, flag, keyFrames, monitor, onFrame, source;
     AudioContext = window.AudioContext || window.webkitAudioContext;
     context = new AudioContext;
-    audio = new Audio;
-    audio.src = url;
+    audio = new Audio(url);
     audio.controls = true;
     audio.autoplay = false;
     audio.onended = clearInterval(monitor);
@@ -23,7 +22,7 @@
       }
     });
     onFrame = function(time) {
-      if (this.debug) {
+      if (this.options.debug) {
         console.log(time);
       }
       if (keyFrames[flag] && keyFrames[flag].time < time) {

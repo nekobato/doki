@@ -3,9 +3,7 @@ window.dokiAudio = (url, options, callback) ->
   AudioContext = window.AudioContext || window.webkitAudioContext
 
   context = new AudioContext
-  audio   = new Audio
-
-  audio.src      = url
+  audio   = new Audio url
   audio.controls = true
   audio.autoplay = false
   audio.onended  = clearInterval(monitor)
@@ -25,7 +23,7 @@ window.dokiAudio = (url, options, callback) ->
     callback() if callback
 
   onFrame = (time) ->
-    console.log(time) if @debug
+    console.log(time) if @options.debug
     if keyFrames[flag] and keyFrames[flag].time < time
       keyFrames[flag].action()
       flag++

@@ -5,7 +5,7 @@
     <title>Doki Play</title>
     <script src="../dist/doki.js" type="text/javascript"></script>
     <script>
-      audio = new dokiAudio('./play.mp3');
+      audio = new dokiAudio('./play.ogg', {debug: true});
       audio.on(0, function(){
         console.log('start');
       }).on(7.8, function() {
