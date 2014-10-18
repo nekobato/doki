@@ -13,8 +13,8 @@
     context = new AudioContext();
     source = context.createMediaElementSource(audio);
     source.connect(context.destination);
-    monitor = null;
     keyFrames = [];
+    monitor = null;
     flag = 0;
     (function() {
       options.debug || (options.debug = false);
@@ -46,10 +46,23 @@
         return this;
       },
       on: function(time, action) {
-        keyFrames.push({
+        var event, i, keyFrame, _i, _len;
+        event = {
           time: time,
           action: action
-        });
+        };
+        if (!keyFrames.length) {
+          keyFrames.push(event);
+          return this;
+        }
+        for (i = _i = 0, _len = keyFrames.length; _i < _len; i = ++_i) {
+          keyFrame = keyFrames[i];
+          if (keyFrame.time > time) {
+            keyFrames.splice(i, 0, event);
+            return this;
+          }
+        }
+        keyFrames.push(event);
         return this;
       }
     };

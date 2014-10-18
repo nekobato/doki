@@ -16,8 +16,8 @@ window.dokiAudio = (targetAudio, options, callback) ->
   source = context.createMediaElementSource(audio)
   source.connect(context.destination)
 
-  monitor = null
   keyFrames = []
+  monitor = null
   flag = 0
 
   # init
@@ -46,7 +46,19 @@ window.dokiAudio = (targetAudio, options, callback) ->
     return @
 
   on: (time, action) ->
-    keyFrames.push
+    event =
       time: time
       action: action
+    
+    if not keyFrames.length
+      keyFrames.push event
+      return @
+
+    for keyFrame, i in keyFrames
+      if keyFrame.time > time
+        keyFrames.splice i, 0, event
+        return @
+
+    keyFrames.push event
     return @
+
