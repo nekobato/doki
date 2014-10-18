@@ -9,14 +9,15 @@
     <h1>Doki Play</h1>
     <audio id="audio">
       <source src="./play.mp3" />
-      <source type="audio/mp3" />
+      <source src="./play.ogg" />
     </audio>
     <button onclick="playAudio()">Play</button>
     <script>
-       playAudio = function() {
-         var audio = document.getElementById('audio');
-         audio.play();
-       }
+      var a = document.getElementById('audio');
+      doki = new dokiAudio(a, {debug:true});
+      playAudio = function() {
+        doki.play();
+      }
     </script>
   </body>
 </html>

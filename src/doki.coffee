@@ -1,12 +1,11 @@
-window.dokiAudio = (url, options, callback) ->
+window.dokiAudio = (audioElm, options, callback) ->
 
-  @options = options || {}
+  options = options || {}
 
   AudioContext = window.AudioContext || window.webkitAudioContext
 
-  context = new AudioContext
-  audio   = new Audio url
-  audio.controls = true
+  context = new AudioContext()
+  audio = audioElm
   audio.autoplay = false
   audio.onended  = clearInterval(monitor)
 
@@ -19,11 +18,12 @@ window.dokiAudio = (url, options, callback) ->
 
   # init
   ->
-    @options.debug    || = false
-    @options.interval || = 40 # 25fps
+    options.debug    || = false
+    options.interval || = 40 # 25fps
     callback() if callback
 
   onFrame = (time) ->
+    console.log time if options.debug
     if keyFrames[flag] and keyFrames[flag].time < time
       keyFrames[flag].action()
       flag++

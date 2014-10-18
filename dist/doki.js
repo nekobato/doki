@@ -1,11 +1,10 @@
 (function() {
-  window.dokiAudio = function(url, options, callback) {
+  window.dokiAudio = function(audioElm, options, callback) {
     var AudioContext, audio, context, flag, keyFrames, monitor, onFrame, source;
-    this.options = options || {};
+    options = options || {};
     AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext;
-    audio = new Audio(url);
-    audio.controls = true;
+    context = new AudioContext();
+    audio = audioElm;
     audio.autoplay = false;
     audio.onended = clearInterval(monitor);
     source = context.createMediaElementSource(audio);
@@ -14,14 +13,16 @@
     keyFrames = [];
     flag = 0;
     (function() {
-      var _base, _base1;
-      (_base = this.options).debug || (_base.debug = false);
-      (_base1 = this.options).interval || (_base1.interval = 40);
+      options.debug || (options.debug = false);
+      options.interval || (options.interval = 40);
       if (callback) {
         return callback();
       }
     });
     onFrame = function(time) {
+      if (options.debug) {
+        console.log(time);
+      }
       if (keyFrames[flag] && keyFrames[flag].time < time) {
         keyFrames[flag].action();
         return flag++;
