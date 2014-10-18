@@ -3,7 +3,7 @@ window.dokiAudio = (targetAudio, options, callback) ->
   options = options || {}
   
   if typeof targetAudio is "string" # URL
-    audio = new Audio(targetAudio)
+    audio = document.body.appendChild new Audio(targetAudio)
   else # AudioTag
     audio = targetAudio
 

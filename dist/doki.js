@@ -3,7 +3,7 @@
     var AudioContext, audio, context, flag, keyFrames, monitor, onFrame, source;
     options = options || {};
     if (typeof targetAudio === "string") {
-      audio = new Audio(targetAudio);
+      audio = document.body.appendChild(new Audio(targetAudio));
     } else {
       audio = targetAudio;
     }
