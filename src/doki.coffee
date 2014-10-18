@@ -1,13 +1,17 @@
-window.dokiAudio = (audioElm, options, callback) ->
+window.dokiAudio = (targetAudio, options, callback) ->
 
   options = options || {}
+  
+  if typeof targetAudio is "string" # URL
+    audio = new Audio(targetAudio)
+  else # AudioTag
+    audio = targetAudio
 
-  AudioContext = window.AudioContext || window.webkitAudioContext
-
-  context = new AudioContext()
-  audio = audioElm
   audio.autoplay = false
   audio.onended  = clearInterval(monitor)
+
+  AudioContext = window.AudioContext || window.webkitAudioContext
+  context = new AudioContext()
 
   source = context.createMediaElementSource(audio)
   source.connect(context.destination)
