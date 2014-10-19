@@ -10,12 +10,6 @@ window.dokiAudio = (targetAudio, options, callback) ->
   audio.autoplay = false
   audio.onended  = clearInterval(monitor)
 
-  AudioContext = window.AudioContext || window.webkitAudioContext
-  context = new AudioContext()
-
-  source = context.createMediaElementSource(audio)
-  source.connect(context.destination)
-
   keyFrames = []
   monitor = null
   flag = 0

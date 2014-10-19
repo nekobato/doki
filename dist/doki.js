@@ -1,6 +1,6 @@
 (function() {
   window.dokiAudio = function(targetAudio, options, callback) {
-    var AudioContext, audio, context, flag, keyFrames, monitor, onFrame, source;
+    var audio, flag, keyFrames, monitor, onFrame;
     options = options || {};
     if (typeof targetAudio === "string") {
       audio = document.body.appendChild(new Audio(targetAudio));
@@ -9,10 +9,6 @@
     }
     audio.autoplay = false;
     audio.onended = clearInterval(monitor);
-    AudioContext = window.AudioContext || window.webkitAudioContext;
-    context = new AudioContext();
-    source = context.createMediaElementSource(audio);
-    source.connect(context.destination);
     keyFrames = [];
     monitor = null;
     flag = 0;

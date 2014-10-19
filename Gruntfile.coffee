@@ -35,6 +35,7 @@ module.exports = (grunt) ->
       compile:
         files: [{
           expand: yes
+          bare: false
           cwd: 'src'
           src: [ '*.coffee' ]
           dest: 'dist'
